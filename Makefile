@@ -24,3 +24,6 @@ tf-clean: ## Remove temp terraform files
 	# CAUNTION: don't delete .terraform-version file
 	rm -rf .terraform .terraform.lock.hcl *.tfplan tmp
 
+df-init-creds: ## Create local credential to connect in warehouse
+	# CAUNTION: don't commit .df-credentials.json
+	dataform init-creds bigquery

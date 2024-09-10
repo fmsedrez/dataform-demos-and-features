@@ -3,3 +3,4 @@ node_modules/
 infra/*.tfplan
 infra/.terraform/
 infra/.terraform.lock.hcl
+.df-credentials.json
