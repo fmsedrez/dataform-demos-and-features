@@ -17,6 +17,8 @@ publish("top_historical", {
     FROM ${ctx.ref("top_five_terms")}
     WHERE TRUE
     AND state = 'GO'
+    ${ctx.when(ctx.incremental(),
+    `AND CURRENT_TIMESTAMP() > (SELECT MAX(timestamp) FROM ${ctx.self()})`)}
     ORDER BY score
     LIMIT 1
 `)
