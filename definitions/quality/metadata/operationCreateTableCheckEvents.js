@@ -16,7 +16,7 @@ operate("check_events_table", {
         record_time_stamp: 'When this the record was created.',
     }
 }).queries(ctx => `
-CREATE TABLE IF NOT EXISTS ${ctx.self()} (
+CREATE TABLE IF NOT EXISTS metadata_quality.check_events (
     catalog_name STRING NOT NULL,
     schema_name STRING NOT NULL,
     table_name STRING,

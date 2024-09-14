@@ -1,6 +1,5 @@
 operate("metadata_quality_dataset", {
     type: 'operations',
-    schema: 'metadata_quality',
     database: dataform.projectConfig.defaultDatabase,
     description: 'Dataset with execution logs',
     dependencies: [''],
@@ -8,10 +7,10 @@ operate("metadata_quality_dataset", {
     hasOutput: true,
     hermetic: true
 }).queries(ctx => `
-CREATE SCHEMA IF NOT EXISTS ${ctx.self()} 
+CREATE SCHEMA IF NOT EXISTS metadata_quality
 OPTIONS(
     location = 'US',
     default_partition_expiration_days = 7,
-    labels = [('pipeline', 'metadata_quality'), ('tool', 'dataform'), ('updated_schedule', 'semanal')]
+    labels = [('pipeline', 'metadata_quality'), ('tool', 'dataform')]
 )
 `)
