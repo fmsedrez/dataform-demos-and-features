@@ -18,6 +18,7 @@ operate("check_table_labels", {
   table_catalog AS catalog_name,
   table_schema AS schema_name,
   table_name,
+  NULL as column_name,
   'label' AS metadata_type,
   CURRENT_TIMESTAMP()
 FROM
