@@ -11,6 +11,7 @@ CREATE SCHEMA IF NOT EXISTS metadata_quality
 OPTIONS(
     location = 'US',
     default_partition_expiration_days = 7,
-    labels = [('pipeline', 'metadata_quality'), ('tool', 'dataform')]
+    labels = [('pipeline', 'metadata_quality'), ('tool', 'dataform')],
+    description = 'Dataset to hold metadata quality checks.'
 )
 `)
