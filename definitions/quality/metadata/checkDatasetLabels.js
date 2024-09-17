@@ -12,6 +12,7 @@ operate("check_dataset_labels", {
   catalog_name,
   schema_name,
   NULL AS table_name,
+  NULL AS column_name,
   'label' AS metadata_type,
   CURRENT_TIMESTAMP()
 FROM
