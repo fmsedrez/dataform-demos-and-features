@@ -17,16 +17,17 @@ operate("check_events_table", {
     }
 }).queries(ctx => `
 CREATE TABLE IF NOT EXISTS metadata_quality.check_events (
-    catalog_name STRING NOT NULL,
-    schema_name STRING NOT NULL,
-    table_name STRING,
-    metadata_type STRING NOT NULL,
-    record_time_stamp TIMESTAMP NOT NULL
+    catalog_name STRING NOT NULL OPTIONS(description="GCP porject id"),
+    schema_name STRING NOT NULL OPTIONS(description="Schema name"),
+    table_name STRING OPTIONS(description="Table name"),
+    metadata_type STRING NOT NULL OPTIONS(description="Type of metadata record"),
+    record_timestamp TIMESTAMP NOT NULL OPTIONS(description="Timestamp of registry")
 )
-PARTITION BY DATE(record_time_stamp)
+PARTITION BY DATE(record_timestamp)
 OPTIONS(
     require_partition_filter = true,
     partition_expiration_days = 7,
-    labels = [('pipeline', 'metadata_quality'), ('tool', 'dataform'), ('updated_schedule', 'semanal')]
+    labels = [('pipeline', 'metadata_quality'), ('tool', 'dataform'), ('updated_schedule', 'semanal')],
+    description = 'Table to hold metadata quality checks events.'
 )
 `)
