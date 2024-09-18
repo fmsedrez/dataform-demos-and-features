@@ -1,4 +1,4 @@
-assertion("assert_metadata", {
+assert("assert_metadata", {
     description: 'Valida as última medições dos metadados',
     hermetic: true,
     tags: ['assert']
