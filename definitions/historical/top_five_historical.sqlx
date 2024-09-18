@@ -4,6 +4,13 @@ config {
   name: "top_five_historical",
   tags: ["historical"],
   dependencies: ["top_five_terms"],
+  assertions: {
+    uniqueKey: ["week", "term", "state"],
+    nonNull: ["week", "term"],
+    rowConditions: [
+      'timestamp > "2024-01-01"',
+    ]
+  },
   bigquery: {
     partitionBy: "DATETIME_TRUNC(timestamp, DAY)",
     clusterBy: ["state"],
